@@ -64,7 +64,22 @@
       </mat-error>
     </mat-form-field>
 
-    <button mat-fab extended color="primary" class="example-full-width" type="submit">
+
+    <div class="row mt-2 mb-2">
+      <mat-label>Género: </mat-label>
+
+      <mat-radio-group required name="genero" [ngModel]="usuario.genero" #genero="ngModel">
+        <mat-radio-button value="M">Masculino</mat-radio-button>
+        <mat-radio-button value="F">Femenino</mat-radio-button>
+      </mat-radio-group>
+  
+      <mat-error *ngIf="genero.invalid">
+        Selecciona un país
+      </mat-error>
+    </div>
+
+
+    <button mat-fab extended color="primary" class="example-full-width mt-2" type="submit">
       <mat-icon>save</mat-icon>
       Guardar
     </button>

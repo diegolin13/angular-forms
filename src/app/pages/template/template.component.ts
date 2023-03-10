@@ -15,7 +15,8 @@ export class TemplateComponent implements OnInit {
     nombre: '',
     last_name: '',
     email: '',
-    pais: ''
+    pais: '',
+    genero: 'M'
   }
 
   constructor(private router: Router,
