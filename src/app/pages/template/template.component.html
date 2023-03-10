@@ -1,29 +1,54 @@
-<h1>Formularios <small> tipo  Template</small></h1>
+<h1>Formularios <small> Template</small></h1>
 <hr>
-<form autocomplete="off" class="example-form">
+<form autocomplete="off" class="example-form" (ngSubmit)="guardar(myForm)" #myForm="ngForm">
 
   <div>
 
-    <mat-form-field class="example-full-width" appearance="outline">
+    <mat-form-field class="example-full-width mb-2" appearance="outline">
       <mat-label>Nombre: </mat-label>
-      <input matInput placeholder="Ej. Juan">
+      <input matInput placeholder="Ej. Juan"
+              required
+              minlength="3"
+              name="nombre"
+              [ngModel]="usuario.nombre"
+              #nombre="ngModel">
       <mat-icon matSuffix>person</mat-icon>
+      <mat-error *ngIf="nombre.invalid">
+        Ingresa tu nombre
+      </mat-error>
     </mat-form-field>
 
-    <mat-form-field class="example-full-width" appearance="outline">
+    <mat-form-field class="example-full-width mb-2" appearance="outline">
       <mat-label>Apellidos: </mat-label>
-      <input matInput placeholder="Ej. Vázquez Sanchez">
+      <input matInput placeholder="Ej. Vázquez Sanchez"
+                      required
+                      minlength="3"
+                      name="lastName"                      
+                      [ngModel]="usuario.last_name"
+                      #lastName="ngModel">
       <mat-icon matSuffix>person</mat-icon>
+      <mat-error *ngIf="lastName.invalid">
+        Ingresa tus apellidos
+      </mat-error>
     </mat-form-field>
 
 
-    <mat-form-field class="example-full-width" appearance="outline">
+    <mat-form-field class="example-full-width mb-2" appearance="outline">
       <mat-label>Correo: </mat-label>
-      <input matInput placeholder="Ej. mi_correo@mail.com">
+      <input matInput placeholder="Ej. mi_correo@mail.com"
+              type="email"
+              pattern="[a-z0-9._%+-]+@[a-z0-9._]+\.[a-z]{2,3}$"
+              required
+              name="mail"
+              [ngModel] = "usuario.email"
+              #email="ngModel">
       <mat-icon matSuffix>email</mat-icon>
+      <mat-error *ngIf="email.invalid">
+        Ingresa un correo válido
+      </mat-error>
     </mat-form-field>
 
-    <button mat-fab extended color="primary" class="example-full-width">
+    <button mat-fab extended color="primary" class="example-full-width" type="submit">
       <mat-icon>save</mat-icon>
       Guardar
     </button>
