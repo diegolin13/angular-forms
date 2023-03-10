@@ -1,0 +1,41 @@
+<h1>Formularios <small> tipo  Reactive</small></h1>
+<hr>
+<form autocomplete="off" class="example-form">
+
+  <div>
+
+    <mat-form-field class="example-full-width" appearance="outline">
+      <mat-label>Nombre: </mat-label>
+      <input matInput placeholder="Ej. Juan">
+      <mat-icon matSuffix>person</mat-icon>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width" appearance="outline">
+      <mat-label>Apellidos: </mat-label>
+      <input matInput placeholder="Ej. Vázquez Sanchez">
+      <mat-icon matSuffix>person</mat-icon>
+    </mat-form-field>
+
+
+    <mat-form-field class="example-full-width" appearance="outline">
+      <mat-label>Correo: </mat-label>
+      <input matInput placeholder="Ej. mi_correo@mail.com">
+      <mat-icon matSuffix>email</mat-icon>
+    </mat-form-field>
+
+    <button mat-fab extended color="primary" class="example-full-width">
+      <mat-icon>save</mat-icon>
+      Guardar
+    </button>
+
+    <button mat-fab extended 
+            color="accent" 
+            class="example-full-width mt-5"
+            (click)="navigateTemplate()">
+      <mat-icon>undo</mat-icon>
+      Ir a templates
+    </button>
+
+  </div>
+
+</form>
