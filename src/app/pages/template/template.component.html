@@ -48,6 +48,22 @@
       </mat-error>
     </mat-form-field>
 
+
+    <mat-form-field class="example-full-width mb-2" appearance="outline">
+      <mat-label>País: </mat-label>
+
+      <mat-select required name="pais" [ngModel]="usuario.pais" #pais="ngModel">
+        <mat-option *ngFor="let pais of paises" [value]="pais.codigo">
+          {{pais.nombre}}
+        </mat-option>
+      </mat-select>
+
+      <mat-icon matSuffix>public</mat-icon>
+      <mat-error *ngIf="pais.invalid">
+        Selecciona un país
+      </mat-error>
+    </mat-form-field>
+
     <button mat-fab extended color="primary" class="example-full-width" type="submit">
       <mat-icon>save</mat-icon>
       Guardar
