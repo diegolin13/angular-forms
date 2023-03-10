@@ -6,12 +6,8 @@ import { ReactiveComponent } from './pages/reactive/reactive.component';
 import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MatInputModule} from '@angular/material/input';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import {MatIconModule} from '@angular/material/icon';
-import {MatSelectModule} from '@angular/material/select';
-import {MatButtonModule} from '@angular/material/button';
 import { HttpClientModule } from '@angular/common/http';
+import { MaterialModule } from './material.module';
 
 @NgModule({
   declarations: [
@@ -25,11 +21,7 @@ import { HttpClientModule } from '@angular/common/http';
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    MatInputModule,
-    MatFormFieldModule,
-    MatIconModule,
-    MatButtonModule,
-    MatSelectModule,
+    MaterialModule
   ],
   providers: [],
   bootstrap: [AppComponent]
