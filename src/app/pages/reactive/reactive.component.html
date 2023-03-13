@@ -1,29 +1,65 @@
 <h1>Formularios <small>Reactive</small></h1>
 <hr>
-<form autocomplete="off" class="example-form">
+<form autocomplete="off" class="example-form" [formGroup]="form" (ngSubmit)="guardar(formDirective)" #formDirective="ngForm">
 
   <div>
 
-    <mat-form-field class="example-full-width" appearance="outline">
+    <mat-form-field class="example-full-width mb-2" appearance="outline">
       <mat-label>Nombre: </mat-label>
-      <input matInput placeholder="Ej. Juan">
+      <input matInput placeholder="Ej. Juan"
+              [class.my-test]="true"
+              formControlName="nombre">
       <mat-icon matSuffix>person</mat-icon>
+      <mat-error *ngIf="form.controls['nombre'].errors">{{getNombreErrors()}}</mat-error>
     </mat-form-field>
 
-    <mat-form-field class="example-full-width" appearance="outline">
+    <mat-form-field class="example-full-width mb-2" appearance="outline">
       <mat-label>Apellidos: </mat-label>
-      <input matInput placeholder="Ej. Vázquez Sanchez">
+      <input matInput placeholder="Ej. Vázquez Sanchez"
+              formControlName="apellidos">
       <mat-icon matSuffix>person</mat-icon>
+      <mat-error *ngIf="form.controls['apellidos'].errors">{{getApellidosErrors()}}</mat-error>
     </mat-form-field>
 
 
-    <mat-form-field class="example-full-width" appearance="outline">
+    <mat-form-field class="example-full-width mb-2" appearance="outline">
       <mat-label>Correo: </mat-label>
-      <input matInput placeholder="Ej. mi_correo@mail.com">
+      <input matInput placeholder="Ej. mi_correo@mail.com"
+              formControlName="correo">
       <mat-icon matSuffix>email</mat-icon>
+      <mat-error *ngIf="form.controls['correo'].errors">{{getEmailErrors()}}</mat-error>
     </mat-form-field>
 
-    <button mat-fab extended color="primary" class="example-full-width">
+    <div formGroupName="direccion">
+      <div class="row">
+        <div class="col-6">
+          <mat-form-field class="example-full-width mb-2" appearance="outline">
+            <mat-label>Calle y Número: </mat-label>
+            <input matInput placeholder="Ej. Insurgentes Sur 53"
+                    formControlName="calle">
+            <mat-icon matSuffix>location_on</mat-icon>
+            <mat-error *ngIf="form.get('direccion.calle')!.errors">{{getCalleErrors()}}</mat-error>
+          </mat-form-field>
+        </div>
+
+
+        <div class="col-6">
+          <mat-form-field class="example-full-width mb-2" appearance="outline">
+            <mat-label>Ciudad: </mat-label>
+            <input matInput placeholder="Ej. CDMX"
+                    formControlName="ciudad">
+            <mat-icon matSuffix>location_on</mat-icon>
+            <mat-error *ngIf="form.get('direccion.ciudad')!.errors">{{getCiudadErrors()}}</mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+
+
+
+    <button mat-fab extended color="primary"
+            type="submit"
+            class="example-full-width">
       <mat-icon>save</mat-icon>
       Guardar
     </button>
@@ -39,3 +75,16 @@
   </div>
 
 </form>
+
+<hr>
+
+<pre>
+  Estado del formulario: {{form.valid}}
+  <br>
+  Status: {{form.status}}
+</pre>
+
+
+<pre>
+  {{form.value | json}}
+</pre>
