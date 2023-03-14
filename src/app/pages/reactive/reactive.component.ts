@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, FormGroupDirective, Validators } from '@angular/forms';
 import {Router} from '@angular/router';
+import { ValidatorsService } from 'src/app/services/validators.service';
 
 
 @Component({
@@ -13,7 +14,8 @@ export class ReactiveComponent {
   form!: FormGroup;
 
   constructor(private router: Router,
-              private fb: FormBuilder) {
+              private fb: FormBuilder,
+              private validators: ValidatorsService) {
     this.createForm();
     // this.initializeForm();
   }
@@ -103,7 +105,7 @@ export class ReactiveComponent {
 
 
   agregar() {
-    this.pasatiempos.push(this.fb.control( '', Validators.required));
+    this.pasatiempos.push(this.fb.control( '', [Validators.required, this.validators.forbiddenHobbies]));
   }
 
   quitar(i: number) {
