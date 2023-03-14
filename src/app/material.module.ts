@@ -6,6 +6,7 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatSelectModule} from '@angular/material/select';
 import {MatButtonModule} from '@angular/material/button';
 import {MatRadioModule} from '@angular/material/radio';
+import {MatTooltipModule} from '@angular/material/tooltip';
 
 
 
@@ -20,6 +21,7 @@ import {MatRadioModule} from '@angular/material/radio';
     MatButtonModule,
     MatSelectModule,
     MatRadioModule,
+    MatTooltipModule
   ],
   exports: [
     MatInputModule,
@@ -27,7 +29,8 @@ import {MatRadioModule} from '@angular/material/radio';
     MatIconModule,
     MatButtonModule,
     MatSelectModule,
-    MatRadioModule
+    MatRadioModule,
+    MatTooltipModule
   ]
 })
 export class MaterialModule { }

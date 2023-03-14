@@ -57,7 +57,7 @@
 
     <div formArrayName="pasatiempos">
       <div class="row" *ngFor="let control of pasatiempos.controls; let i = index">
-        <div class="col-11">
+        <div class="col-10">
           <mat-form-field class="example-full-width mb-2" appearance="outline">
             <mat-label>Hobby: </mat-label>
             <input matInput placeholder="Ej. Pasatiempos"
@@ -65,9 +65,10 @@
             <mat-icon matSuffix>sports_basketball</mat-icon>
           </mat-form-field>
         </div>
-        <div class="col-1">
+        <div class="col-2">
           <button mat-icon-button 
                   type="button"
+                  matTooltip="Quitar Hobby"
                   (click)="quitar(i)"
                   color="warn">
             <mat-icon>delete</mat-icon>
@@ -82,7 +83,7 @@
             (click)="agregar()"
             class="example-full-width mt-2">
     <mat-icon>add</mat-icon>
-    Agregar campo
+    Agregar Hobby
     </button>
 
 
