@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, FormGroupDirective, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormGroup, FormGroupDirective, Validators } from '@angular/forms';
 import {Router} from '@angular/router';
 
 
@@ -18,6 +18,10 @@ export class ReactiveComponent {
     // this.initializeForm();
   }
 
+  get pasatiempos() {
+    return this.form.get('pasatiempos') as FormArray;
+  }
+
   navigateTemplate() {
     this.router.navigate(['/']);
   }
@@ -31,6 +35,7 @@ export class ReactiveComponent {
         calle: ['', Validators.required],
         ciudad: ['', Validators.required]
       }),
+      pasatiempos: this.fb.array([ [],[], [] ])
     });
   }
 
