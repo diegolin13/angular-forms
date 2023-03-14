@@ -58,8 +58,11 @@ export class ReactiveComponent {
 
   guardar(formDirective: FormGroupDirective) {
     if (this.form.invalid)  return;
-    console.log(this.form);
+    console.log(this.form.value);
     formDirective.resetForm();
+    while (this.pasatiempos.length !== 0) {
+      this.pasatiempos.removeAt(0)
+    }
     this.form.reset();
   }
 
