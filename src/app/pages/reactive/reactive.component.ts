@@ -23,7 +23,7 @@ export class ReactiveComponent {
   }
 
   navigateTemplate() {
-    this.router.navigate(['/']);
+    this.router.navigate(['/template']);
   }
 
   createForm() {

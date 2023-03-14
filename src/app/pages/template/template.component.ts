@@ -30,7 +30,7 @@ export class TemplateComponent implements OnInit {
   }
 
   navigateReactive() {
-    this.router.navigate(['/reactive'])
+    this.router.navigate(['/'])
   }
 
   guardar(formulario: NgForm) {
