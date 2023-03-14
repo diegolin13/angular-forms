@@ -35,7 +35,7 @@ export class ReactiveComponent {
         calle: ['', Validators.required],
         ciudad: ['', Validators.required]
       }),
-      pasatiempos: this.fb.array([ [],[], [] ])
+      pasatiempos: this.fb.array([])
     });
   }
 
@@ -99,6 +99,15 @@ export class ReactiveComponent {
       return 'Ingresa tu ciudad'
     }
     return 
+  }
+
+
+  agregar() {
+    this.pasatiempos.push(this.fb.control( '', Validators.required));
+  }
+
+  quitar(i: number) {
+    this.pasatiempos.removeAt(i);
   }
 
   

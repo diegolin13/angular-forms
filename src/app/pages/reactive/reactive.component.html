@@ -55,29 +55,23 @@
       </div>
     </div>
 
-    <!-- <div class="row" formArrayName="pasatiempos">
-      <div class="col-11">
-        <mat-form-field class="example-full-width mb-2" appearance="outline" *ngFor="let control of pasatiempos.controls; let i = index">
-          <mat-label>Hobby {{i}}: </mat-label>
-          <input matInput placeholder="Ej. Pasatiempos"
-                  [formControlName]="i">
-          <mat-icon matSuffix>sports_basketball</mat-icon>
-        </mat-form-field>
-      </div>
-    </div> -->
-
     <div formArrayName="pasatiempos">
       <div class="row" *ngFor="let control of pasatiempos.controls; let i = index">
         <div class="col-11">
           <mat-form-field class="example-full-width mb-2" appearance="outline">
-            <mat-label>Hobby {{i}}: </mat-label>
+            <mat-label>Hobby: </mat-label>
             <input matInput placeholder="Ej. Pasatiempos"
                     [formControlName]="i">
             <mat-icon matSuffix>sports_basketball</mat-icon>
           </mat-form-field>
         </div>
         <div class="col-1">
-          <button mat-stroked-button extended color="warn" type="button">Eliminar</button>
+          <button mat-icon-button 
+                  type="button"
+                  (click)="quitar(i)"
+                  color="warn">
+            <mat-icon>delete</mat-icon>
+          </button>
         </div>
       </div>
     </div>
@@ -85,9 +79,10 @@
     <button mat-stroked-button extended
             color="primary"
             type="button"
+            (click)="agregar()"
             class="example-full-width mt-2">
     <mat-icon>add</mat-icon>
-    Agregar pasatiempo
+    Agregar campo
     </button>
 
 
