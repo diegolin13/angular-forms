@@ -10,7 +10,7 @@ export class ValidatorsService {
   constructor() { }
 
   forbiddenHobbies(control: FormControl): {[s:string]: boolean} | null {
-    if (control.value.toLowerCase().trim() === FORBIDDEN_HOBIES) {
+    if (control.value?.toLowerCase().trim() === FORBIDDEN_HOBIES) {
       return {
         forbiddenHobbie: true
       }

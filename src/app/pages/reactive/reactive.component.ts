@@ -58,7 +58,7 @@ export class ReactiveComponent {
 
   guardar(formDirective: FormGroupDirective) {
     if (this.form.invalid)  return;
-    console.log(this.form.value);
+    console.log(this.form);
     formDirective.resetForm();
     this.form.reset();
   }
@@ -101,6 +101,15 @@ export class ReactiveComponent {
       return 'Ingresa tu ciudad'
     }
     return 
+  }
+
+  getHobbiesErrors(i: number) {
+    if (this.pasatiempos.controls[i].hasError('forbiddenHobbie')) {
+      return 'Prohibido patear perritos 😡';
+    } else if (this.pasatiempos.controls[i].hasError('required')) {
+      return 'Escribe un hobbie o borralo'
+    }
+    return
   }
 
 
