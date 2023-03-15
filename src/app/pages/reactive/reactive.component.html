@@ -81,7 +81,7 @@
             <input matInput placeholder="Ej. Patinar"
                     [formControlName]="i">
             <mat-icon matSuffix>sports_basketball</mat-icon>
-            <mat-error *ngIf="pasatiempos.controls[i].errors">{{getHobbiesErrors(i)}}</mat-error>
+            <mat-error *ngIf="pasatiempos.controls[i].errors">{{this.errorsMessages.getHobbiesErrors(pasatiempos.controls[i])}}</mat-error>
           </mat-form-field>
         </div>
         <div class="col-md-1" style="text-align: center;">

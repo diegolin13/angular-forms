@@ -62,6 +62,13 @@ export class ReactiveComponent {
     );
   }
 
+  agregar() {
+    this.pasatiempos.push(this.fb.control( '', [Validators.required, this.validators.forbiddenHobbies]));
+  }
+
+  quitar(i: number) {
+    this.pasatiempos.removeAt(i);
+  }
 
   guardar(formDirective: FormGroupDirective) {
     if (this.form.invalid)  return;
@@ -71,23 +78,6 @@ export class ReactiveComponent {
       this.pasatiempos.removeAt(0)
     }
     this.form.reset();
-  }
-
-  getHobbiesErrors(i: number) {
-    if (this.pasatiempos.controls[i].hasError('forbiddenHobbie')) {
-      return 'Prohibido patear perritos 😡';
-    } else if (this.pasatiempos.controls[i].hasError('required')) {
-      return 'Escribe un hobbie o borralo'
-    }
-    return
-  }
-
-  agregar() {
-    this.pasatiempos.push(this.fb.control( '', [Validators.required, this.validators.forbiddenHobbies]));
-  }
-
-  quitar(i: number) {
-    this.pasatiempos.removeAt(i);
   }
 
   

@@ -62,5 +62,14 @@ export class ErrorsMessageService {
     return 
   }
 
+  getHobbiesErrors(hobbieControl : AbstractControl) {
+    if (hobbieControl.hasError('forbiddenHobbie')) {
+      return 'Prohibido patear perritos 😡';
+    } else if (hobbieControl.hasError('required')) {
+      return 'Escribe un hobbie o borralo';
+    }
+    return
+  }
+
 
 }
