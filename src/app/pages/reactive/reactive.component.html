@@ -30,6 +30,24 @@
       <mat-error *ngIf="form.controls['correo'].errors">{{getEmailErrors()}}</mat-error>
     </mat-form-field>
 
+    <mat-form-field class="example-full-width mb-2" appearance="outline">
+      <mat-label>Ingresar contraseña</mat-label>
+      <input matInput formControlName="pass1" [type]="hide ? 'password' : 'text'">
+      <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" type="button" [attr.aria-pressed]="hide">
+        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+      </button>
+      <mat-error *ngIf="form.controls['pass1'].errors">{{getPassword()}}</mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width mb-2" appearance="outline">
+      <mat-label>Confirmar contraseña</mat-label>
+      <input matInput formControlName="pass2" [type]="hide ? 'password' : 'text'">
+      <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" type="button" [attr.aria-pressed]="hide">
+        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+      </button>
+      <mat-error *ngIf="form.controls['pass2'].errors">{{getPasswordConfirm()}}</mat-error>
+    </mat-form-field>
+
     <div formGroupName="direccion">
       <div class="row">
         <div class="col-6">

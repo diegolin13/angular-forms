@@ -11,6 +11,7 @@ import { ValidatorsService } from 'src/app/services/validators.service';
 })
 export class ReactiveComponent {
 
+  hide = true;
   form!: FormGroup;
 
   constructor(private router: Router,
@@ -32,12 +33,16 @@ export class ReactiveComponent {
     this.form = this.fb.group({
       nombre: ['', [Validators.required, Validators.minLength(3)]],
       apellidos: ['', [Validators.required, Validators.minLength(3)]],
-      correo: ['', [Validators.required, Validators.pattern('[a-z0-9._%+-]+@[a-z0-9._]+\.[a-z]{2,3}$')]],
+      correo: ['', [Validators.required, Validators.pattern('[a-z0-9._%+-]+@[a-z0-9._]+\.[a-z]{2,3}$')], [this.validators.emailExists]],
+      pass1: ['', Validators.required],
+      pass2: ['', Validators.required],
       direccion: this.fb.group({
         calle: ['', Validators.required],
         ciudad: ['', Validators.required]
       }),
       pasatiempos: this.fb.array([])
+    }, {
+      validators: [this.validators.checkPasswords('pass1', 'pass2')]
     });
   }
 
@@ -86,7 +91,9 @@ export class ReactiveComponent {
 
   getEmailErrors() {
     if (this.form.controls['correo'].hasError('required')) {
-      return 'Ingresa tu correo'
+      return 'Ingresa tu correo';
+    } else if (this.form.controls['correo'].hasError('existe')) {
+      return 'Correo ya registrado';
     }
 
     return 'Ingresa un correo válido'
@@ -111,6 +118,22 @@ export class ReactiveComponent {
       return 'Prohibido patear perritos 😡';
     } else if (this.pasatiempos.controls[i].hasError('required')) {
       return 'Escribe un hobbie o borralo'
+    }
+    return
+  }
+
+  getPassword() {
+    if (this.form.get('pass1')?.hasError('required')) {
+      return 'Ingresa una contraseña';
+    }
+    return
+  }
+
+  getPasswordConfirm() {
+    if (this.form.get('pass2')?.hasError('badPassConfirm')) {
+      return 'No coinciden las contraseñas';
+    } else if (this.form.get('pass2')?.hasError('required')) {
+      return 'Confirma tu contraseña';
     }
     return
   }
