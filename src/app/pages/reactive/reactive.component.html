@@ -10,7 +10,7 @@
               [class.my-test]="true"
               formControlName="nombre">
       <mat-icon matSuffix>person</mat-icon>
-      <mat-error *ngIf="form.controls['nombre'].errors">{{getNombreErrors()}}</mat-error>
+      <mat-error *ngIf="form.controls['nombre'].errors">{{this.errorsMessages.getNombreErrors(form.controls['nombre'])}}</mat-error>
     </mat-form-field>
 
     <mat-form-field class="example-full-width mb-2" appearance="outline">
@@ -18,7 +18,7 @@
       <input matInput placeholder="Ej. Vázquez Sanchez"
               formControlName="apellidos">
       <mat-icon matSuffix>person</mat-icon>
-      <mat-error *ngIf="form.controls['apellidos'].errors">{{getApellidosErrors()}}</mat-error>
+      <mat-error *ngIf="form.controls['apellidos'].errors">{{this.errorsMessages.getApellidosErrors(form.controls['apellidos'])}}</mat-error>
     </mat-form-field>
 
 
@@ -27,7 +27,7 @@
       <input matInput placeholder="Ej. mi_correo@mail.com"
               formControlName="correo">
       <mat-icon matSuffix>email</mat-icon>
-      <mat-error *ngIf="form.controls['correo'].errors">{{getEmailErrors()}}</mat-error>
+      <mat-error *ngIf="form.controls['correo'].errors">{{this.errorsMessages.getEmailErrors(form.controls['correo'])}}</mat-error>
     </mat-form-field>
 
     <mat-form-field class="example-full-width mb-2" appearance="outline">
@@ -36,7 +36,7 @@
       <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" type="button" [attr.aria-pressed]="hide">
         <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
       </button>
-      <mat-error *ngIf="form.controls['pass1'].errors">{{getPassword()}}</mat-error>
+      <mat-error *ngIf="form.controls['pass1'].errors">{{this.errorsMessages.getPassword(form.controls['pass1'])}}</mat-error>
     </mat-form-field>
 
     <mat-form-field class="example-full-width mb-2" appearance="outline">
@@ -45,7 +45,7 @@
       <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" type="button" [attr.aria-pressed]="hide">
         <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
       </button>
-      <mat-error *ngIf="form.controls['pass2'].errors">{{getPasswordConfirm()}}</mat-error>
+      <mat-error *ngIf="form.controls['pass2'].errors">{{this.errorsMessages.getPasswordConfirm(form.controls['pass2'])}}</mat-error>
     </mat-form-field>
 
     <div formGroupName="direccion">
@@ -56,7 +56,7 @@
             <input matInput placeholder="Ej. Insurgentes Sur 53"
                     formControlName="calle">
             <mat-icon matSuffix>location_on</mat-icon>
-            <mat-error *ngIf="form.get('direccion.calle')!.errors">{{getCalleErrors()}}</mat-error>
+            <mat-error *ngIf="form.get('direccion.calle')!.errors">{{this.errorsMessages.getCalleErrors(form.get('direccion.calle'))}}</mat-error>
           </mat-form-field>
         </div>
 
@@ -67,7 +67,7 @@
             <input matInput placeholder="Ej. CDMX"
                     formControlName="ciudad">
             <mat-icon matSuffix>location_on</mat-icon>
-            <mat-error *ngIf="form.get('direccion.ciudad')!.errors">{{getCiudadErrors()}}</mat-error>
+            <mat-error *ngIf="form.get('direccion.ciudad')!.errors">{{this.errorsMessages.getCiudadErrors(form.get('direccion.ciudad'))}}</mat-error>
           </mat-form-field>
         </div>
       </div>
