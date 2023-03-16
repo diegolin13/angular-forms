@@ -1,38 +1,37 @@
-import { AfterViewInit, Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
-import { ErrorsMessageService } from 'src/app/services/errors-message.service';
-import { ReactiveResponse } from 'src/interfaces/reactive-data.interface';
-import {MatPaginator} from '@angular/material/paginator';
-import {MatSort} from '@angular/material/sort';
-import {MatTableDataSource} from '@angular/material/table';
 import { Location } from '@angular/common';
+import { Component, OnInit, ViewChild, OnDestroy, AfterViewInit } from '@angular/core';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
+import { ErrorsMessageService } from 'src/app/services/errors-message.service';
 import { SweetAlertService } from 'src/app/services/sweet-alert.service';
-
+import { TemplateData } from 'src/interfaces/template-data.interface';
 
 @Component({
-  selector: 'app-data-reactive',
-  templateUrl: './data-reactive.component.html',
-  styleUrls: ['./data-reactive.component.css']
+  selector: 'app-data-template',
+  templateUrl: './data-template.component.html',
+  styleUrls: ['./data-template.component.css']
 })
-export class DataReactiveComponent implements OnInit, OnDestroy, AfterViewInit {
-
-  public data: ReactiveResponse[] = [];
-  displayedColumns: string[] = ['nombre', 'apellidos', 'correo', 'pwd', 'domicilio', 'hobbies'];
-  dataSource!: MatTableDataSource<ReactiveResponse>;
-  @ViewChild(MatPaginator) paginator: MatPaginator;
-  @ViewChild(MatSort) sort: MatSort;
+export class DataTemplateComponent implements OnInit, OnDestroy, AfterViewInit {
 
   constructor(private dataService: ErrorsMessageService,
               private location: Location,
               private sweetAlert: SweetAlertService) {}
 
-  ngOnDestroy(): void {
-    this.dataService.data = [];
-  }
+  data : TemplateData[] = [];
+  displayedColumns: string[] = ['nombre', 'apellidos', 'correo', 'pais', 'genero'];
+  dataSource!: MatTableDataSource<TemplateData>;
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatSort) sort: MatSort;
 
   ngOnInit(): void {
-    this.data = this.dataService.data;
+    this.data = this.dataService.templateData;
     this.dataSource = new MatTableDataSource(this.data);
     this.checkData();
+  }
+
+  ngOnDestroy(): void {
+    this.dataService.templateData = [];
   }
 
   ngAfterViewInit() {
@@ -40,11 +39,12 @@ export class DataReactiveComponent implements OnInit, OnDestroy, AfterViewInit {
     this.dataSource.sort = this.sort;
   }
 
+
   checkData() {
     if (this.data.length === 0) {
       this.sweetAlert.noData().then((result) => {
         if(result.isConfirmed) {
-          this.data = this.dataService.randomData;
+          this.data = this.dataService.randomTempData;
           this.data = this.data.sort(() => Math.random() - 0.5);
           this.dataSource = new MatTableDataSource(this.data);
           this.dataSource.paginator = this.paginator;

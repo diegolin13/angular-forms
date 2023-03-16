@@ -10,13 +10,15 @@ import { HttpClientModule } from '@angular/common/http';
 import { MaterialModule } from './material.module';
 import { DataReactiveComponent } from './pages/data-reactive/data-reactive.component';
 import { PipesModule } from './pipes/pipes.module';
+import { DataTemplateComponent } from './pages/data-template/data-template.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TemplateComponent,
     ReactiveComponent,
-    DataReactiveComponent
+    DataReactiveComponent,
+    DataTemplateComponent
   ],
   imports: [
     BrowserModule,

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AbstractControl } from '@angular/forms';
 import { ReactiveResponse } from 'src/interfaces/reactive-data.interface';
+import { TemplateData } from 'src/interfaces/template-data.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -23,6 +24,22 @@ export class ErrorsMessageService {
     {nombre: 'Mafer', apellidos: 'De la O', correo: 'mafer@gmail.com', pass1: 'secret', direccion: {calle: 'Insurgentes 92', ciudad: 'CDMX'}, pasatiempos: ['Bailar', 'Cantar']},
     {nombre: 'Tomas', apellidos: 'Porráz Alcazar', correo: 'tom@gmail.com', pass1: 'secret', direccion: {calle: 'Postales 3', ciudad: 'CDMX'}, pasatiempos: ['Nadar']},
   ];
+  public templateData: TemplateData[] = [];
+  public randomTempData: TemplateData[] = [
+    {nombre: 'Alan', lastName: 'Hernandez', mail: 'test@tes.com', pais: 'MEX', genero: 'M'},
+    {nombre: 'Francisco', lastName: 'Alvarez', mail: 'test@tes.com', pais: 'MEX', genero: 'M'},
+    {nombre: 'Bruno', lastName: 'Marioni', mail: 'test@tes.com', pais: 'MEX', genero: 'M'},
+    {nombre: 'Dario', lastName: 'Veron', mail: 'test@tes.com', pais: 'MEX', genero: 'M'},
+    {nombre: 'Bryan', lastName: 'Figeroa', mail: 'test@tes.com', pais: 'MEX', genero: 'M'},
+    {nombre: 'Leandro', lastName: 'Augusto', mail: 'test@tes.com', pais: 'MEX', genero: 'M'},
+    {nombre: 'Francisco', lastName: 'Palencia', mail: 'test@tes.com', pais: 'MEX', genero: 'M'},
+    {nombre: 'Martín', lastName: 'Bravo', mail: 'test@tes.com', pais: 'MEX', genero: 'M'},
+    {nombre: 'Esteban', lastName: 'Solari', mail: 'test@tes.com', pais: 'MEX', genero: 'F'},
+    {nombre: 'Aracely', lastName: 'Arambula', mail: 'test@tes.com', pais: 'MEX', genero: 'F'},
+    {nombre: 'Lady', lastName: 'Gaga', mail: 'test@tes.com', pais: 'MEX', genero: 'F'},
+    {nombre: 'Jennifer', lastName: 'López', mail: 'test@tes.com', pais: 'MEX', genero: 'F'}
+  ];
+
 
   getNombreErrors(nameControl : AbstractControl): string {
     if (nameControl.hasError('required')) {

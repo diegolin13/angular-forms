@@ -79,14 +79,23 @@
     </div>
 
 
-    <button mat-fab extended color="primary" class="example-full-width mt-2" type="submit">
+    <button mat-fab extended color="primary" class="example-full-width mt-4" type="submit">
       <mat-icon>save</mat-icon>
       Guardar
     </button>
 
+    <button mat-stroked-button          
+      class="example-full-width mt-4"
+      type="button"
+      (click)="visualizar()"
+      color="accent">
+      <mat-icon>newspaper</mat-icon>
+        Visualizar data
+    </button>
+
     <button mat-fab extended 
         color="accent" 
-        class="example-full-width mt-5"
+        class="example-full-width mt-4"
         (click)="navigateReactive()">
         <mat-icon>undo</mat-icon>
         Formularios Reactivos
@@ -96,3 +105,5 @@
   </div>
 
 </form>
+
+<hr>

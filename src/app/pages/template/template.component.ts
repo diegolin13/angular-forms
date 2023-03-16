@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { FormGroup, FormGroupDirective, NgForm } from '@angular/forms';
 import {Router} from '@angular/router';
+import { ErrorsMessageService } from 'src/app/services/errors-message.service';
 import { PaisService } from 'src/app/services/pais.service';
+import { SweetAlertService } from 'src/app/services/sweet-alert.service';
+import { TemplateData } from 'src/interfaces/template-data.interface';
 
 @Component({
   selector: 'app-template',
@@ -11,6 +14,7 @@ import { PaisService } from 'src/app/services/pais.service';
 export class TemplateComponent implements OnInit {
 
   paises : any[] = [];
+  savedData : TemplateData[] = [];
   usuario = {
     nombre: '',
     last_name: '',
@@ -20,7 +24,10 @@ export class TemplateComponent implements OnInit {
   }
 
   constructor(private router: Router,
-              private paisService: PaisService) {}
+              private paisService: PaisService,
+              private sweetAlert: SweetAlertService,
+              private dataService: ErrorsMessageService
+             ) {}
 
   ngOnInit(): void {
     this.paisService.getPaises().subscribe((resp) => {
@@ -30,12 +37,19 @@ export class TemplateComponent implements OnInit {
   }
 
   navigateReactive() {
-    this.router.navigate(['/'])
+    this.router.navigate(['/']);
   }
 
-  guardar(formulario: NgForm) {
+  guardar(formulario: FormGroupDirective | any) {
     if(formulario.invalid) return;
-    console.log(formulario.value);    
+    this.sweetAlert.success();
+    this.savedData.push(formulario.value);
+    formulario.resetForm(this.usuario);
+  }
+
+  visualizar() {
+    this.dataService.templateData = this.savedData;
+    this.router.navigate(['/template-data']);
   }
 
 }

@@ -11,7 +11,7 @@ export class SweetAlertService {
   noData(): Promise<any> {
     return Swal.fire({
       title: 'Sin información registrada',
-      text: "¿Quieres usar información de relleno?",
+      text: "¿Deseas continuar con información de relleno?",
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
