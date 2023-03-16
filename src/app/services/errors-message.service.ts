@@ -39,7 +39,7 @@ export class ErrorsMessageService {
     if (pass1Control?.hasError('required')) {
       return 'Ingresa una contraseña';
     }
-    return
+    return '';
   }
 
   getPasswordConfirm(pass2Control : AbstractControl) {
@@ -48,21 +48,21 @@ export class ErrorsMessageService {
     } else if (pass2Control?.hasError('required')) {
       return 'Confirma tu contraseña';
     }
-    return
+    return '';
   }
 
   getCalleErrors(calleControl : AbstractControl | null) {
     if (calleControl!.hasError('required')) {
       return 'Ingresa tu calle y número';
     }
-    return 
+    return '';
   }
 
   getCiudadErrors(ciudadControl : AbstractControl | null) {
     if (ciudadControl!.hasError('required')) {
       return 'Ingresa tu ciudad';
     }
-    return 
+    return '';
   }
 
   getHobbiesErrors(hobbieControl : AbstractControl) {
@@ -71,7 +71,7 @@ export class ErrorsMessageService {
     } else if (hobbieControl.hasError('required')) {
       return 'Escribe un hobbie o borralo';
     }
-    return
+    return '';
   }
 
 
