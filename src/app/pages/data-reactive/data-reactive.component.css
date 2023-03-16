@@ -32,3 +32,8 @@ table {
 .mat-column-created {
   max-width: 124px;
 }
+
+th.mat-mdc-header-cell {
+  color: white;
+  background-color: #3f51b5;
+}
