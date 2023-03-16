@@ -5,6 +5,7 @@ import {MatPaginator} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
 import { Location } from '@angular/common';
+import { SweetAlertService } from 'src/app/services/sweet-alert.service';
 
 @Component({
   selector: 'app-data-reactive',
@@ -20,7 +21,8 @@ export class DataReactiveComponent implements OnInit, OnDestroy, AfterViewInit {
   @ViewChild(MatSort) sort: MatSort;
 
   constructor(private dataService: ErrorsMessageService,
-              private location: Location) {}
+              private location: Location,
+              private sweetAlert: SweetAlertService) {}
 
   ngOnDestroy(): void {
     this.dataService.data = [];
@@ -29,11 +31,28 @@ export class DataReactiveComponent implements OnInit, OnDestroy, AfterViewInit {
   ngOnInit(): void {
     this.data = this.dataService.data;
     this.dataSource = new MatTableDataSource(this.data);
+    this.checkData();
   }
 
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
+  }
+
+  checkData() {
+    if (this.data.length === 0) {
+      this.sweetAlert.noData().then((result) => {
+        if(result.isConfirmed) {
+          this.data = this.dataService.randomData;
+          this.data = this.data.sort(() => Math.random() - 0.5);
+          this.dataSource = new MatTableDataSource(this.data);
+          this.dataSource.paginator = this.paginator;
+          this.dataSource.sort = this.sort;
+        } else {
+          this.regresar();
+        }
+      });
+    }
   }
 
   applyFilter(event: Event) {

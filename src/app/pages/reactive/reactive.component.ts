@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, FormGroupDirective, Validators } from '@angular/forms';
 import {Router} from '@angular/router';
 import { ErrorsMessageService } from 'src/app/services/errors-message.service';
+import { SweetAlertService } from 'src/app/services/sweet-alert.service';
 import { ValidatorsService } from 'src/app/services/validators.service';
 import { ReactiveResponse } from 'src/interfaces/reactive-data.interface';
 
@@ -20,7 +21,8 @@ export class ReactiveComponent {
   constructor(private router: Router,
               private fb: FormBuilder,
               private validators: ValidatorsService,
-              public errorsMessages: ErrorsMessageService) {
+              public errorsMessages: ErrorsMessageService,
+              private sweetAlert: SweetAlertService) {
     this.createForm();
     // this.initializeForm();
   }
@@ -74,6 +76,7 @@ export class ReactiveComponent {
 
   guardar(formDirective: FormGroupDirective) {
     if (this.form.invalid)  return;
+    this.sweetAlert.success();
     console.log(this.form.value);
     this.savedData.push(this.form.value);
     formDirective.resetForm();

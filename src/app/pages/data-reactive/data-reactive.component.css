@@ -19,7 +19,7 @@ table {
   .example-table-container {
     position: relative;
     /* min-height: 200px; */
-    max-height: 400px;
+    max-height: 500px;
     overflow: auto;
   }
 

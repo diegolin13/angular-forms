@@ -3,7 +3,7 @@ export interface ReactiveResponse {
     apellidos:   string;
     correo:      string;
     pass1:       string;
-    pass2:       string;
+    pass2?:       string;
     direccion:   Direccion;
     pasatiempos: string[];
 }
