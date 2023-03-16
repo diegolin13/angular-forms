@@ -1,4 +1,15 @@
-<h1>Formularios <small>Reactive</small></h1>
+<div class="example-button-row">
+  <div class="example-flex-container">
+    <h1 class="mt-2">Formularios <small>Reactive</small></h1>
+    <button mat-icon-button 
+            matTooltip="Info del formulario"
+            type="button"
+            (click)="infoDialog()"
+            color="primary">
+      <mat-icon>info</mat-icon>
+    </button>
+  </div>
+</div>
 <hr>
 <form autocomplete="off" class="example-form" [formGroup]="form" (ngSubmit)="guardar(formDirective)" #formDirective="ngForm">
 

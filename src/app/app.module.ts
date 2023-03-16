@@ -11,6 +11,7 @@ import { MaterialModule } from './material.module';
 import { DataReactiveComponent } from './pages/data-reactive/data-reactive.component';
 import { PipesModule } from './pipes/pipes.module';
 import { DataTemplateComponent } from './pages/data-template/data-template.component';
+import { InfoDialogComponent } from './components/info-dialog/info-dialog.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { DataTemplateComponent } from './pages/data-template/data-template.compo
     TemplateComponent,
     ReactiveComponent,
     DataReactiveComponent,
-    DataTemplateComponent
+    DataTemplateComponent,
+    InfoDialogComponent
   ],
   imports: [
     BrowserModule,

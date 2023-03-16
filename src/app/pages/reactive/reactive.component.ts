@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, FormGroupDirective, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import {Router} from '@angular/router';
+import { InfoDialogComponent } from 'src/app/components/info-dialog/info-dialog.component';
 import { ErrorsMessageService } from 'src/app/services/errors-message.service';
 import { SweetAlertService } from 'src/app/services/sweet-alert.service';
 import { ValidatorsService } from 'src/app/services/validators.service';
@@ -22,7 +24,8 @@ export class ReactiveComponent {
               private fb: FormBuilder,
               private validators: ValidatorsService,
               public errorsMessages: ErrorsMessageService,
-              private sweetAlert: SweetAlertService) {
+              private sweetAlert: SweetAlertService,
+              public dialog: MatDialog) {
     this.createForm();
     // this.initializeForm();
   }
@@ -91,6 +94,9 @@ export class ReactiveComponent {
     this.router.navigate(['/reactive-data']);
   }
 
+  infoDialog() {
+    this.dialog.open(InfoDialogComponent);
+  }
   
 
 }

@@ -1,0 +1,45 @@
+<h2 mat-dialog-title>Características del formulario</h2>
+<mat-dialog-content class="mat-typography">
+    <h2>Validaciones</h2>
+    <p>El siguiente formulario cuenta con 3 tipos de validaciones: </p>
+    <ol>
+        <li>Validaciones <b>síncronas</b>: <br>
+            Todos los campos en el formulario son <b>requeridos</b>. Adicionalmente, para el <b>nombre</b>  y <b>apellidos</b> se necesitan <b>mínimo 3 letras</b>
+            y para validar el <b>correo</b> se utiliza una <b>expresión regular.</b>
+        </li>
+        <br>
+        <li>
+            Validaciones <b>asíncronas</b>: <br>
+            El campo de <b>correo</b> cuenta también con una validación asíncrona que se termina de ejecutar <b>después de 2 segundos</b> al detectar cambios en su valor.
+            Con esto se simula que al ingresar el correo, se evalué si ya ha sido registrado con anterioridad. (Aunque para este ejercicio solo existe un correo que dispara el error <b>"test@test.com"</b> 🙊).            
+        </li>
+        <br>
+        <li>
+            Validaciones <b>personalizadas</b>: <br>
+            Se creó una validación personalizada para el campo de <b>Hobby</b>. En esta validación, se prohíbe que el usuario ingrese la cadena de texto <b>"patear perritos"</b>.
+            En caso de detectarse, el formulario queda invalidado.
+        </li>
+    </ol>
+
+    <h2>FormGroupName</h2>
+
+    <p>Este formulario cuenta con dos campos que estan agrupados en un solo objeto, los cuales son: <b>Calle</b> y <b>Ciudad</b> mismos que se ecuentran dentro del objeto <b>domicilio</b>.
+        De esta manera al obtener el valor del formulario encontraremos una propiedad de nombre <b>domicilio</b> la cual contendrá una <b>calle</b> y una <b>ciudad</b>
+    </p>
+
+
+    <h2>Form Array</h2>
+
+    <p>Se utilizó un FormArray para que el usuario pueda <b>agregar</b> y <b>quitar</b> la cantidad de <b>hobbies</b> que desee.
+        Cada control nuevo generado se maneja de forma independiente.
+    </p>
+
+    <h2>Mensajes de error</h2>
+
+    <p>Cuando el valor de algún campo choque con alguna validación, se muestra un <b>mensaje de retroalimentación</b> para que el usuario pueda corregirlo.</p>
+
+    <p></p>
+  </mat-dialog-content>
+  <mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close>Cerrar</button>
+  </mat-dialog-actions>
