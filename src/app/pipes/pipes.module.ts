@@ -6,13 +6,13 @@ import { PasswordPipe } from './password.pipe';
 
 @NgModule({
   declarations: [
-    PasswordPipe
+    PasswordPipe,
   ],
   imports: [
     CommonModule
   ],
   exports: [
-    PasswordPipe
+    PasswordPipe,
   ]
 })
 export class PipesModule { }

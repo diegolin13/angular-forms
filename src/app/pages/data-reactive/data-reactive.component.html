@@ -45,6 +45,8 @@
           <ul *ngFor="let pasatiempo of row.pasatiempos">
             <li>{{pasatiempo}}</li>
           </ul>
+
+          <p *ngIf="row.pasatiempos.length === 0"> Sin pasatiempos 😥 </p>
         </td>
       </ng-container>
   

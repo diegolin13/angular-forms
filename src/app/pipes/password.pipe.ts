@@ -6,7 +6,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class PasswordPipe implements PipeTransform {
 
   transform(value: string): string {
-    return '*****';
+    return '**********';
   }
 
 }
