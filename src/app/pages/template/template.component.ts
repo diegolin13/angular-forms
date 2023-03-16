@@ -33,6 +33,8 @@ export class TemplateComponent implements OnInit {
     this.paisService.getPaises().subscribe((resp) => {
       this.paises = resp;
       this.paises.unshift({nombre: '[ Selecciona un pais ]', codigo: ''});
+    }, () => {
+      this.paises = [{nombre: 'México', codigo: 'MX'}, {nombre: 'Estados Unidos', codigo: 'USA'}, {nombre: 'Colombia', codigo: 'COL'}]
     });
   }
 
