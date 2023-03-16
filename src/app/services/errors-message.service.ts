@@ -1,10 +1,13 @@
 import { Injectable } from '@angular/core';
 import { AbstractControl } from '@angular/forms';
+import { ReactiveResponse } from 'src/interfaces/reactive-data.interface';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ErrorsMessageService {
+
+  public data: ReactiveResponse[] = [];
 
   getNombreErrors(nameControl : AbstractControl): string {
     if (nameControl.hasError('required')) {

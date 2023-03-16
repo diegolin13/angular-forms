@@ -3,6 +3,7 @@ import { FormArray, FormBuilder, FormGroup, FormGroupDirective, Validators } fro
 import {Router} from '@angular/router';
 import { ErrorsMessageService } from 'src/app/services/errors-message.service';
 import { ValidatorsService } from 'src/app/services/validators.service';
+import { ReactiveResponse } from 'src/interfaces/reactive-data.interface';
 
 
 @Component({
@@ -14,6 +15,7 @@ export class ReactiveComponent {
 
   hide = true;
   form!: FormGroup;
+  savedData : ReactiveResponse[] = [];
 
   constructor(private router: Router,
               private fb: FormBuilder,
@@ -73,11 +75,17 @@ export class ReactiveComponent {
   guardar(formDirective: FormGroupDirective) {
     if (this.form.invalid)  return;
     console.log(this.form.value);
+    this.savedData.push(this.form.value);
     formDirective.resetForm();
     while (this.pasatiempos.length !== 0) {
       this.pasatiempos.removeAt(0)
     }
     this.form.reset();
+  }
+
+  visualizar() {
+    this.errorsMessages.data = this.savedData;
+    this.router.navigate(['/reactive-data']);
   }
 
   

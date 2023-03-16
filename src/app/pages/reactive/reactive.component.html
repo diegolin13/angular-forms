@@ -110,15 +110,24 @@
 
     <button mat-fab extended color="primary"
             type="submit"
-            class="example-full-width mt-2">
+            class="example-full-width mt-4">
       <mat-icon>save</mat-icon>
       Guardar
+    </button>
+
+    <button mat-stroked-button          
+            class="example-full-width mt-4"
+            type="button"
+            (click)="visualizar()"
+            color="accent">
+            <mat-icon>newspaper</mat-icon>
+            Visualizar data
     </button>
 
     <button mat-fab extended 
             color="accent"
             type="button"
-            class="example-full-width mt-5"
+            class="example-full-width mt-4"
             (click)="navigateTemplate()">
       <mat-icon>undo</mat-icon>
       Formularios por template
