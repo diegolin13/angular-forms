@@ -9,6 +9,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { MaterialModule } from './material.module';
 import { DataReactiveComponent } from './pages/data-reactive/data-reactive.component';
+import { PipesModule } from './pipes/pipes.module';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { DataReactiveComponent } from './pages/data-reactive/data-reactive.compo
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    MaterialModule
+    MaterialModule,
+    PipesModule
   ],
   providers: [],
   bootstrap: [AppComponent]
